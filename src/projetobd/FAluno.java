@@ -31,7 +31,6 @@ public class FAluno extends javax.swing.JFrame {
     }
 
     public FAluno(Aluno_VO vo) {
-        setLocationRelativeTo(null);
         initComponents();
         try {
             alunoVO = vo;
@@ -303,6 +302,7 @@ public class FAluno extends javax.swing.JFrame {
         jTabbedPane1.getAccessibleContext().setAccessibleName("Visualizar");
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jTXFNewGrrActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTXFNewGrrActionPerformed

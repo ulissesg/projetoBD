@@ -21,7 +21,6 @@ public class FLogin extends javax.swing.JFrame {
     Aluno_RN alunoRN;
 
     public FLogin() {
-        setLocationRelativeTo(null);
         initComponents();
         alunoVO = new Aluno_VO();
         alunoRN = new Aluno_RN();
@@ -89,6 +88,7 @@ public class FLogin extends javax.swing.JFrame {
         jTXFLogin.getAccessibleContext().setAccessibleName("");
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jBTNConectarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBTNConectarActionPerformed
@@ -102,6 +102,7 @@ public class FLogin extends javax.swing.JFrame {
             {
                 this.setVisible(false);
                 new FAluno(alunoVO).setVisible(true);
+                new FHistorico().setVisible(true);
             }
         } 
         catch (Exception e) 

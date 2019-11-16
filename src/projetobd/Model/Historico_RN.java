@@ -104,7 +104,7 @@ public class Historico_RN {
             
             while (rs.next()){
                 
-                historico.setPK_hsitorico(rs.getString("PK_historico"));
+                historico.setPK_historico(rs.getString("PK_historico"));
                 historico.setNum_vezes_cursado(rs.getString("num_vezes_cursado"));
                 historico.setNota_final(rs.getString("nota_final"));
                 historico.setDisciplina(rs.getString("disciplina"));

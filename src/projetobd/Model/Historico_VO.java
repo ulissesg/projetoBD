@@ -10,7 +10,7 @@ package projetobd.Model;
  * @author uliss
  */
 public class Historico_VO {
-    private String PK_hsitorico;
+    private String PK_historico;
     private String num_vezes_cursado;
     private String nota_final;
     private String disciplina;
@@ -18,11 +18,11 @@ public class Historico_VO {
     private String FK_GRR;
 
     public String getPK_hsitorico() {
-        return PK_hsitorico;
+        return PK_historico;
     }
 
-    public void setPK_hsitorico(String PK_hsitorico) {
-        this.PK_hsitorico = PK_hsitorico;
+    public void setPK_historico(String PK_hsitorico) {
+        this.PK_historico = PK_hsitorico;
     }
 
     public String getNum_vezes_cursado() {
