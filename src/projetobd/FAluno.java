@@ -36,10 +36,10 @@ public class FAluno extends javax.swing.JFrame {
             alunoVO = vo;
             alunoRN = new Aluno_RN();
 
-            this.jTXFCPF.setText(alunoVO.getCpf());
-            this.jTXFGrr.setText(alunoVO.getPk_grr());
-            this.jTXFNome.setText(alunoVO.getNome());
-            this.jPASSenha.setText(alunoVO.getSenha());
+            this.jTXFCPFNew.setText(alunoVO.getCpf());
+            this.jTXFGrrNew.setText(alunoVO.getPk_grr());
+            this.jTXFNomeNew.setText(alunoVO.getNome());
+            this.jPASSenhaNew.setText(alunoVO.getSenha());
         } catch (Exception ex) {
             Logger.getLogger(FAluno.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -80,13 +80,13 @@ public class FAluno extends javax.swing.JFrame {
         jPanel3 = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
         jTXFGrrbusca = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
+        jBBuscar = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTXABusca = new javax.swing.JTextArea();
         jPanel4 = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
         jTXFGrrDel = new javax.swing.JTextField();
-        jButton2 = new javax.swing.JButton();
+        jBDel = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTXAExcluido = new javax.swing.JTextArea();
 
@@ -180,10 +180,10 @@ public class FAluno extends javax.swing.JFrame {
             }
         });
 
-        jButton1.setText("Buscar");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        jBBuscar.setText("Buscar");
+        jBBuscar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                jBBuscarActionPerformed(evt);
             }
         });
 
@@ -206,8 +206,8 @@ public class FAluno extends javax.swing.JFrame {
                                 .addGap(0, 0, Short.MAX_VALUE))))
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGap(126, 126, 126)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 118, Short.MAX_VALUE))
+                        .addComponent(jBBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 98, Short.MAX_VALUE))
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jScrollPane1)))
@@ -221,7 +221,7 @@ public class FAluno extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jTXFGrrbusca, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jButton1)
+                .addComponent(jBBuscar)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 178, Short.MAX_VALUE)
                 .addContainerGap())
@@ -237,10 +237,10 @@ public class FAluno extends javax.swing.JFrame {
             }
         });
 
-        jButton2.setText("Deletar");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        jBDel.setText("Deletar");
+        jBDel.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                jBDelActionPerformed(evt);
             }
         });
 
@@ -263,8 +263,8 @@ public class FAluno extends javax.swing.JFrame {
                             .addComponent(jTXFGrrDel)))
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addGap(126, 126, 126)
-                        .addComponent(jButton2)
-                        .addGap(0, 136, Short.MAX_VALUE))
+                        .addComponent(jBDel)
+                        .addGap(0, 116, Short.MAX_VALUE))
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jScrollPane2)))
@@ -278,7 +278,7 @@ public class FAluno extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jTXFGrrDel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButton2)
+                .addComponent(jBDel)
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 178, Short.MAX_VALUE)
                 .addContainerGap())
@@ -290,11 +290,14 @@ public class FAluno extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 324, Short.MAX_VALUE)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
@@ -318,7 +321,13 @@ public class FAluno extends javax.swing.JFrame {
             alunoVO.setSenha(new String(this.jPASSenha.getPassword()).trim());
 
             if(alunoRN.editarAluno(alunoVO))
-            JOptionPane.showMessageDialog(null,"Aluno Alterado");
+                this.jTXFCPFNew.setText(alunoVO.getCpf());
+                this.jTXFGrrNew.setText(alunoVO.getPk_grr());
+                this.jTXFNomeNew.setText(alunoVO.getNome());
+                this.jPASSenhaNew.setText(alunoVO.getSenha());
+                this.jTXFGrrbusca.setText(alunoVO.getPk_grr());
+                this.jTXFGrrDel.setText(alunoVO.getPk_grr());
+                JOptionPane.showMessageDialog(null,"Aluno Alterado");
 
         } catch (ParseException ex) {
             Logger.getLogger(FAluno.class.getName()).log(Level.SEVERE, null, ex);
@@ -344,6 +353,8 @@ public class FAluno extends javax.swing.JFrame {
                 this.jTXFGrr.setText(alunoVO.getPk_grr());
                 this.jTXFNome.setText(alunoVO.getNome());
                 this.jPASSenha.setText(alunoVO.getSenha());
+                this.jTXFGrrbusca.setText(alunoVO.getPk_grr());
+                this.jTXFGrrDel.setText(alunoVO.getPk_grr());
                 JOptionPane.showMessageDialog(null,"Aluno Inserido");
             }
 
@@ -354,7 +365,7 @@ public class FAluno extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jBTNCadastrarActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void jBBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBBuscarActionPerformed
         try {
             alunoVO.setPk_grr(this.jTXFGrrbusca.getText());
 
@@ -363,17 +374,26 @@ public class FAluno extends javax.swing.JFrame {
                                    "\nNome: " + alunoVO.getNome()+
                                    "\nCPF: " + alunoVO.getCpf() + 
                                    "\nSenha: " + alunoVO.getSenha());
+            this.jTXFCPF.setText(alunoVO.getCpf());
+            this.jTXFGrr.setText(alunoVO.getPk_grr());
+            this.jTXFNome.setText(alunoVO.getNome());
+            this.jPASSenha.setText(alunoVO.getSenha());
+            this.jTXFCPFNew.setText(alunoVO.getCpf());
+            this.jTXFGrrNew.setText(alunoVO.getPk_grr());
+            this.jTXFNomeNew.setText(alunoVO.getNome());
+            this.jPASSenhaNew.setText(alunoVO.getSenha());
+            this.jTXFGrrDel.setText(alunoVO.getPk_grr());
 
         } catch (Exception ex) {
             Logger.getLogger(FAluno.class.getName()).log(Level.SEVERE, null, ex);
         }
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_jBBuscarActionPerformed
 
     private void jTXFGrrbuscaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTXFGrrbuscaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTXFGrrbuscaActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void jBDelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBDelActionPerformed
         try {
             alunoVO.setPk_grr(this.jTXFGrrDel.getText());
 
@@ -382,11 +402,19 @@ public class FAluno extends javax.swing.JFrame {
                                    "\nNome: " + alunoVO.getNome()+
                                    "\nCPF: " + alunoVO.getCpf() + 
                                    "\nSenha: " + alunoVO.getSenha());
+            this.jTXFCPF.setText(alunoVO.getCpf());
+            this.jTXFGrr.setText(alunoVO.getPk_grr());
+            this.jTXFNome.setText(alunoVO.getNome());
+            this.jPASSenha.setText(alunoVO.getSenha());
+            this.jTXFCPFNew.setText(alunoVO.getCpf());
+            this.jTXFGrrNew.setText(alunoVO.getPk_grr());
+            this.jTXFNomeNew.setText(alunoVO.getNome());
+            this.jPASSenhaNew.setText(alunoVO.getSenha());
 
         } catch (Exception ex) {
             Logger.getLogger(FAluno.class.getName()).log(Level.SEVERE, null, ex);
         }
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_jBDelActionPerformed
 
     private void jTXFGrrDelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTXFGrrDelActionPerformed
         
@@ -428,10 +456,10 @@ public class FAluno extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jBBuscar;
+    private javax.swing.JButton jBDel;
     private javax.swing.JToggleButton jBTNCadastrar;
     private javax.swing.JToggleButton jBTNEditar;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;

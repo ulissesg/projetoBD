@@ -5,6 +5,7 @@
  */
 package projetobd;
 
+import java.text.ParseException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -20,9 +21,12 @@ public class FHistorico extends javax.swing.JFrame {
     Historico_VO historicoVO;
     Historico_RN historicoRN;
     /**
-     * Creates new form FHistorico
+     * Creates new form JFhistorico
      */
     public FHistorico(){
+
+        historicoRN = new Historico_RN();
+        historicoVO = new Historico_VO();
         initComponents();
     }
     
@@ -35,7 +39,7 @@ public class FHistorico extends javax.swing.JFrame {
             this.jTFDisciplina.setText(historicoVO.getDisciplina());
             this.jTFNtFinal.setText(historicoVO.getNota_final());
             this.jTFSituacao.setText(historicoVO.getSituacao());
-            this.jTFSituacao.setText(historicoVO.getSituacao());
+            this.jTFVzCursada.setText(historicoVO.getNum_vezes_cursado());
             this.jTFGRR.setText(historicoVO.getFK_GRR());
             
         } catch (Exception e) {
@@ -95,6 +99,9 @@ public class FHistorico extends javax.swing.JFrame {
         jTADeletar = new javax.swing.JTextArea();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Historico");
+
+        jTP.setPreferredSize(new java.awt.Dimension(340, 400));
 
         jLDisciplina.setText("Disciplina");
 
@@ -128,18 +135,14 @@ public class FHistorico extends javax.swing.JFrame {
                     .addComponent(jTFDisciplina))
                 .addContainerGap())
             .addGroup(jPanelInserirLayout.createSequentialGroup()
+                .addGap(10, 10, 10)
                 .addGroup(jPanelInserirLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanelInserirLayout.createSequentialGroup()
-                        .addGap(10, 10, 10)
-                        .addGroup(jPanelInserirLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLDisciplina)
-                            .addComponent(jLNtFinal)
-                            .addComponent(jLSituacao)
-                            .addComponent(jLabel4)
-                            .addComponent(jLGRR)))
-                    .addGroup(jPanelInserirLayout.createSequentialGroup()
-                        .addGap(10, 10, 10)
-                        .addComponent(jLabel6)))
+                    .addComponent(jLDisciplina)
+                    .addComponent(jLNtFinal)
+                    .addComponent(jLSituacao)
+                    .addComponent(jLabel4)
+                    .addComponent(jLGRR)
+                    .addComponent(jLabel6))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanelInserirLayout.setVerticalGroup(
@@ -167,9 +170,9 @@ public class FHistorico extends javax.swing.JFrame {
                 .addComponent(jTFGRR, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel6)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jBInserir)
-                .addContainerGap(80, Short.MAX_VALUE))
+                .addContainerGap(132, Short.MAX_VALUE))
         );
 
         jTP.addTab("Inserir", jPanelInserir);
@@ -269,7 +272,7 @@ public class FHistorico extends javax.swing.JFrame {
                         .addComponent(jTFGRREdit, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(jBEditar)))
-                .addContainerGap(43, Short.MAX_VALUE))
+                .addContainerGap(83, Short.MAX_VALUE))
         );
 
         jTP.addTab("Editar", jPanelEditar);
@@ -304,7 +307,7 @@ public class FHistorico extends javax.swing.JFrame {
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(jPanelBuscarLayout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 316, Short.MAX_VALUE)))
+                        .addComponent(jScrollPane1)))
                 .addContainerGap())
         );
         jPanelBuscarLayout.setVerticalGroup(
@@ -317,7 +320,7 @@ public class FHistorico extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(jBBuscar)
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 281, Short.MAX_VALUE)
+                .addComponent(jScrollPane1)
                 .addContainerGap())
         );
 
@@ -353,7 +356,7 @@ public class FHistorico extends javax.swing.JFrame {
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(jPanelDeletarLayout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 316, Short.MAX_VALUE)))
+                        .addComponent(jScrollPane2)))
                 .addContainerGap())
         );
         jPanelDeletarLayout.setVerticalGroup(
@@ -366,7 +369,7 @@ public class FHistorico extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(jBDeletar)
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 281, Short.MAX_VALUE)
+                .addComponent(jScrollPane2)
                 .addContainerGap())
         );
 
@@ -376,66 +379,74 @@ public class FHistorico extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTP)
+            .addComponent(jTP, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTP)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jTP, javax.swing.GroupLayout.PREFERRED_SIZE, 470, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
+
+        getAccessibleContext().setAccessibleName("Historico");
 
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jBInserirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBInserirActionPerformed
+
         try {
             historicoVO.setDisciplina(this.jTFDisciplina.getText());
             historicoVO.setNota_final(this.jTFNtFinal.getText());
             historicoVO.setSituacao(this.jTFSituacao.getText());
             historicoVO.setNum_vezes_cursado(this.jTFVzCursada.getText());
             historicoVO.setFK_GRR(this.jTFGRR.getText());
-            
+
             if(historicoRN.inserirHistorico(historicoVO)){
+                this.jTFDisciplinaEdit.setText(historicoVO.getDisciplina());
+                this.jTFNtFinalEdit.setText(historicoVO.getNota_final());
+                this.jTFSituacaoEdit.setText(historicoVO.getSituacao());
+                this.jTFVzCursadaEdit.setText(historicoVO.getNum_vezes_cursado());
+                this.jTFGRREdit.setText(historicoVO.getFK_GRR());
+                this.jTFPkHistorico.setText(historicoVO.getPK_historico());
+                this.jTFPkHistoricoBuscar.setText(historicoVO.getPK_historico());
+                this.jTFPkHistoricoDeletar.setText(historicoVO.getPK_historico());
                 JOptionPane.showMessageDialog(null, "Historico inserido");
             }
-            
+        } catch (ParseException ex) {
+            Logger.getLogger(FAluno.class.getName()).log(Level.SEVERE, null, ex);
         } catch (Exception e) {
             Logger.getLogger(FAluno.class.getName()).log(Level.SEVERE, null, e);
         }
     }//GEN-LAST:event_jBInserirActionPerformed
 
-    private void jBEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBEditarActionPerformed
-         try {
-            historicoVO.setDisciplina(this.jTFDisciplinaEdit.getText());
-            historicoVO.setNota_final(this.jTFNtFinalEdit.getText());
-            historicoVO.setSituacao(this.jTFSituacaoEdit.getText());
-            historicoVO.setNum_vezes_cursado(this.jTFVzCursadaEdit.getText());
-            historicoVO.setFK_GRR(this.jTFGRREdit.getText());
-            historicoVO.setPK_historico(this.jTFPkHistorico.getText());
-            
-            if(historicoRN.editarHistorico(historicoVO)){
-                JOptionPane.showMessageDialog(null, "Historico Alterado");
-            }
-            
-        } catch (Exception e) {
-            Logger.getLogger(FAluno.class.getName()).log(Level.SEVERE, null, e);
-        }
-    }//GEN-LAST:event_jBEditarActionPerformed
-
     private void jBBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBBuscarActionPerformed
         try {
-            
+
             historicoVO.setPK_historico(this.jTFPkHistoricoBuscar.getText());
-            
+
             if(historicoRN.selectHistorico(historicoVO)){
-                this.jTABuscar.setText("ID: " + historicoVO.getPK_hsitorico()
-                                      +"Disciplina: " + historicoVO.getDisciplina()
-                                      +"Nota Final: " + historicoVO.getNota_final()
-                                      +"Situacao: " + historicoVO.getSituacao()
-                                      +"Vezez Cursada: " + historicoVO.getNum_vezes_cursado()
-                                      +"GRR: " + historicoVO.getFK_GRR());
+                this.jTABuscar.setText("ID: " + historicoVO.getPK_historico()
+                    +"\nDisciplina: " + historicoVO.getDisciplina()
+                    +"\nNota Final: " + historicoVO.getNota_final()
+                    +"\nSituacao: " + historicoVO.getSituacao()
+                    +"\nVezes Cursada: " + historicoVO.getNum_vezes_cursado()
+                    +"\nGRR: " + historicoVO.getFK_GRR());
+                this.jTFDisciplina.setText(historicoVO.getDisciplina());
+                this.jTFNtFinal.setText(historicoVO.getNota_final());
+                this.jTFSituacao.setText(historicoVO.getSituacao());
+                this.jTFVzCursada.setText(historicoVO.getNum_vezes_cursado());
+                this.jTFGRR.setText(historicoVO.getFK_GRR());
+                this.jTFDisciplinaEdit.setText(historicoVO.getDisciplina());
+                this.jTFNtFinalEdit.setText(historicoVO.getNota_final());
+                this.jTFSituacaoEdit.setText(historicoVO.getSituacao());
+                this.jTFVzCursadaEdit.setText(historicoVO.getNum_vezes_cursado());
+                this.jTFGRREdit.setText(historicoVO.getFK_GRR());
+                this.jTFPkHistorico.setText(historicoVO.getPK_historico());
+                this.jTFPkHistoricoDeletar.setText(historicoVO.getPK_historico());
             }
-            
+
         } catch (Exception e) {
             Logger.getLogger(FAluno.class.getName()).log(Level.SEVERE, null, e);
         }
@@ -443,22 +454,59 @@ public class FHistorico extends javax.swing.JFrame {
 
     private void jBDeletarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBDeletarActionPerformed
         try {
-            
+
             historicoVO.setPK_historico(this.jTFPkHistoricoDeletar.getText());
-            
+
             if(historicoRN.excluirHistorico(historicoVO)){
-                this.jTABuscar.setText("O seguinte Historico foi excluido: \nID: " + historicoVO.getPK_hsitorico()
-                                      +"Disciplina: " + historicoVO.getDisciplina()
-                                      +"Nota Final: " + historicoVO.getNota_final()
-                                      +"Situacao: " + historicoVO.getSituacao()
-                                      +"Vezez Cursada: " + historicoVO.getNum_vezes_cursado()
-                                      +"GRR: " + historicoVO.getFK_GRR());
+                this.jTADeletar.setText("O seguinte Historico foi excluido: \nID: " + historicoVO.getPK_historico()
+                    +"\nDisciplina: " + historicoVO.getDisciplina()
+                    +"\nNota Final: " + historicoVO.getNota_final()
+                    +"\nSituacao: " + historicoVO.getSituacao()
+                    +"\nVezes Cursada: " + historicoVO.getNum_vezes_cursado()
+                    +"\nGRR: " + historicoVO.getFK_GRR());
+                this.jTFDisciplina.setText(historicoVO.getDisciplina());
+                this.jTFNtFinal.setText(historicoVO.getNota_final());
+                this.jTFSituacao.setText(historicoVO.getSituacao());
+                this.jTFVzCursada.setText(historicoVO.getNum_vezes_cursado());
+                this.jTFGRR.setText(historicoVO.getFK_GRR());
+                this.jTFDisciplinaEdit.setText(historicoVO.getDisciplina());
+                this.jTFNtFinalEdit.setText(historicoVO.getNota_final());
+                this.jTFSituacaoEdit.setText(historicoVO.getSituacao());
+                this.jTFVzCursadaEdit.setText(historicoVO.getNum_vezes_cursado());
+                this.jTFGRREdit.setText(historicoVO.getFK_GRR());
+                this.jTFPkHistorico.setText(historicoVO.getPK_historico());
+                this.jTFPkHistoricoBuscar.setText(historicoVO.getPK_historico());
             }
-            
+
         } catch (Exception e) {
             Logger.getLogger(FAluno.class.getName()).log(Level.SEVERE, null, e);
         }
     }//GEN-LAST:event_jBDeletarActionPerformed
+
+    private void jBEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBEditarActionPerformed
+        try {
+            historicoVO.setDisciplina(this.jTFDisciplinaEdit.getText());
+            historicoVO.setNota_final(this.jTFNtFinalEdit.getText());
+            historicoVO.setSituacao(this.jTFSituacaoEdit.getText());
+            historicoVO.setNum_vezes_cursado(this.jTFVzCursadaEdit.getText());
+            historicoVO.setFK_GRR(this.jTFGRREdit.getText());
+            historicoVO.setPK_historico(this.jTFPkHistorico.getText());
+
+            if(historicoRN.editarHistorico(historicoVO)){
+                this.jTFDisciplina.setText(historicoVO.getDisciplina());
+                this.jTFNtFinal.setText(historicoVO.getNota_final());
+                this.jTFSituacao.setText(historicoVO.getSituacao());
+                this.jTFVzCursada.setText(historicoVO.getNum_vezes_cursado());
+                this.jTFGRR.setText(historicoVO.getFK_GRR());
+                this.jTFPkHistoricoBuscar.setText(historicoVO.getPK_historico());
+                this.jTFPkHistoricoDeletar.setText(historicoVO.getPK_historico());
+                JOptionPane.showMessageDialog(null, "Historico Alterado");
+            }
+
+        } catch (Exception e) {
+            //            Logger.getLogger(FAluno.class.getName()).log(Level.SEVERE, null, e);
+        }
+    }//GEN-LAST:event_jBEditarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -485,6 +533,7 @@ public class FHistorico extends javax.swing.JFrame {
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(FHistorico.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */

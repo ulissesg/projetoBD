@@ -17,7 +17,7 @@ public class Historico_VO {
     private String situacao;
     private String FK_GRR;
 
-    public String getPK_hsitorico() {
+    public String getPK_historico() {
         return PK_historico;
     }
 

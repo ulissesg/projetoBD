@@ -25,6 +25,7 @@ public class Historico_RN {
     //INSERIR-------------------------------------------------------------------
     public boolean inserirHistorico (Historico_VO his) throws Exception{
         try {
+
             conex = new Conexao();
             PreparedStatement insertH = conex.conectar().prepareCall("{call dbo.p_historico_insert(?,?,?,?,?)}");
             
@@ -33,7 +34,7 @@ public class Historico_RN {
             insertH.setString(3, his.getDisciplina());
             insertH.setString(4, his.getSituacao());
             insertH.setString(5, his.getFK_GRR());
-            
+
             insertH.executeUpdate();
             return true;
             
@@ -51,7 +52,7 @@ public class Historico_RN {
             conex = new Conexao();
             PreparedStatement editarH = conex.conectar().prepareCall("{call dbo.p_historico_update(?,?,?,?,?,?)}");
             
-            editarH.setString(1, his.getPK_hsitorico());
+            editarH.setString(1, his.getPK_historico());
             editarH.setString(2, his.getNum_vezes_cursado());
             editarH.setString(3, his.getNota_final());
             editarH.setString(4, his.getDisciplina());
@@ -76,7 +77,7 @@ public class Historico_RN {
             
             PreparedStatement excluirH = conex.conectar().prepareCall("{call dbo.p_historico_delete(?)}");
             
-            excluirH.setString(1, his.getPK_hsitorico());
+            excluirH.setString(1, his.getPK_historico());
             
             excluirH.executeUpdate();
             return true;
@@ -100,7 +101,7 @@ public class Historico_RN {
             
             Statement selectH = conex.conectar().createStatement();
             
-            ResultSet rs = selectH.executeQuery("Select * from historico where PK_historico = " + "'" + his.getPK_hsitorico() + "'");
+            ResultSet rs = selectH.executeQuery("Select * from historico where PK_historico = " + "'" + his.getPK_historico() + "'");
             
             while (rs.next()){
                 
