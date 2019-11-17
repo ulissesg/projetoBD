@@ -49,7 +49,7 @@ public class Endereco_RN {
     public boolean editarEndereco (Endereco_VO end) throws Exception{
         try {
             conex = new Conexao();
-            PreparedStatement ps = conex.conectar().prepareCall("{call dbo.p_endereco_update(?,?,?,?,?,?,?,?,?)");
+            PreparedStatement ps = conex.conectar().prepareCall("{call dbo.p_endereco_update(?,?,?,?,?,?,?,?,?)}");
             
             ps.setString(1, end.getPKEndereco());
             ps.setString(2, end.getNewPKEndereco());

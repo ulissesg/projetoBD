@@ -5,8 +5,10 @@
  */
 package projetobd;
 
+import java.text.ParseException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import projetobd.Model.Endereco_RN;
 import projetobd.Model.Endereco_VO;
 
@@ -150,9 +152,8 @@ public class FEndereco extends javax.swing.JFrame {
                         .addContainerGap()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jTFPKEndereco, javax.swing.GroupLayout.Alignment.CENTER)
-                            .addGroup(javax.swing.GroupLayout.Alignment.CENTER, jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
-                                .addComponent(jTFGrr, javax.swing.GroupLayout.DEFAULT_SIZE, 301, Short.MAX_VALUE)
-                                .addComponent(jBInserir))
+                            .addComponent(jTFGrr, javax.swing.GroupLayout.Alignment.CENTER, javax.swing.GroupLayout.DEFAULT_SIZE, 301, Short.MAX_VALUE)
+                            .addComponent(jBInserir, javax.swing.GroupLayout.Alignment.CENTER)
                             .addComponent(jTFComplemento, javax.swing.GroupLayout.Alignment.CENTER)
                             .addComponent(jTFNum, javax.swing.GroupLayout.Alignment.CENTER)
                             .addComponent(jTFRua, javax.swing.GroupLayout.Alignment.CENTER)
@@ -255,9 +256,8 @@ public class FEndereco extends javax.swing.JFrame {
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jTFNewPkEnderecp, javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jTFPKEnderecoEdit, javax.swing.GroupLayout.Alignment.CENTER)
-                            .addGroup(javax.swing.GroupLayout.Alignment.CENTER, jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
-                                .addComponent(jTFGrrEdit, javax.swing.GroupLayout.DEFAULT_SIZE, 301, Short.MAX_VALUE)
-                                .addComponent(jBEditar))
+                            .addComponent(jTFGrrEdit, javax.swing.GroupLayout.Alignment.CENTER, javax.swing.GroupLayout.DEFAULT_SIZE, 301, Short.MAX_VALUE)
+                            .addComponent(jBEditar, javax.swing.GroupLayout.Alignment.CENTER)
                             .addComponent(jTFComplementoEdit, javax.swing.GroupLayout.Alignment.CENTER)
                             .addComponent(jTFNumEdit, javax.swing.GroupLayout.Alignment.CENTER)
                             .addComponent(jTFRuaEdit, javax.swing.GroupLayout.Alignment.CENTER)
@@ -322,6 +322,11 @@ public class FEndereco extends javax.swing.JFrame {
         jLabel28.setText("ID");
 
         jBBuscar.setText("Buscar");
+        jBBuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBBuscarActionPerformed(evt);
+            }
+        });
 
         jTABuscar.setColumns(20);
         jTABuscar.setRows(5);
@@ -366,6 +371,11 @@ public class FEndereco extends javax.swing.JFrame {
         jLabel29.setText("ID");
 
         jBExcluir.setText("Excluir");
+        jBExcluir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBExcluirActionPerformed(evt);
+            }
+        });
 
         jTAExcluir.setColumns(20);
         jTAExcluir.setRows(5);
@@ -423,12 +433,157 @@ public class FEndereco extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jBEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBEditarActionPerformed
-        // TODO add your handling code here:
+        try {
+            enderecoVO.setPKEndereco(this.jTFPKEnderecoEdit.getText());
+            enderecoVO.setCep(this.jTFCepEdit.getText());
+            enderecoVO.setPais(this.jTFPaisEdit.getText());
+            enderecoVO.setCidade(this.jTFCidadeEdit.getText());
+            enderecoVO.setRua(this.jTFRuaEdit.getText());
+            enderecoVO.setNumero(this.jTFNumEdit.getText());
+            enderecoVO.setComplemento(this.jTFComplementoEdit.getText());
+            enderecoVO.setFKGrr(this.jTFGrrEdit.getText());
+            enderecoVO.setNewPKEndereco(this.jTFNewPkEnderecp.getText());
+            
+            if(enderecoRN.editarEndereco(enderecoVO)){
+                
+                this.jTFPKEndereco.setText(enderecoVO.getPKEndereco());
+                this.jTFCep.setText(enderecoVO.getCep());
+                this.jTFPais.setText(enderecoVO.getPais());
+                this.jTFCidade.setText(enderecoVO.getCidade());
+                this.jTFRua.setText(enderecoVO.getRua());
+                this.jTFNum.setText(enderecoVO.getNumero());
+                this.jTFComplemento.setText(enderecoVO.getComplemento());
+                this.jTFGrr.setText(enderecoVO.getFKGrr());
+                this.jTFPKEnderecoBuscar.setText(enderecoVO.getPKEndereco());
+                this.jTFPKEnderecoExcluir.setText(enderecoVO.getPKEndereco());
+                
+                JOptionPane.showMessageDialog(null, "Endereco editado");
+            }
+            
+        }  catch (ParseException ex) {
+            Logger.getLogger(FEndereco.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (Exception e) {
+            Logger.getLogger(FEndereco.class.getName()).log(Level.SEVERE, null, e);
+        }
     }//GEN-LAST:event_jBEditarActionPerformed
 
     private void jBInserirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBInserirActionPerformed
-        // TODO add your handling code here:
+        try {
+            enderecoVO.setPKEndereco(this.jTFPKEndereco.getText());
+            enderecoVO.setCep(this.jTFCep.getText());
+            enderecoVO.setPais(this.jTFPais.getText());
+            enderecoVO.setCidade(this.jTFCidade.getText());
+            enderecoVO.setRua(this.jTFRua.getText());
+            enderecoVO.setNumero(this.jTFNum.getText());
+            enderecoVO.setComplemento(this.jTFComplemento.getText());
+            enderecoVO.setFKGrr(this.jTFGrr.getText());
+            
+            if(enderecoRN.inserirEndereco(enderecoVO)){
+                
+                this.jTFPKEnderecoEdit.setText(enderecoVO.getPKEndereco());
+                this.jTFCepEdit.setText(enderecoVO.getCep());
+                this.jTFPaisEdit.setText(enderecoVO.getPais());
+                this.jTFCidadeEdit.setText(enderecoVO.getCidade());
+                this.jTFRuaEdit.setText(enderecoVO.getRua());
+                this.jTFNumEdit.setText(enderecoVO.getNumero());
+                this.jTFComplementoEdit.setText(enderecoVO.getComplemento());
+                this.jTFGrrEdit.setText(enderecoVO.getFKGrr());
+                this.jTFPKEnderecoBuscar.setText(enderecoVO.getPKEndereco());
+                this.jTFPKEnderecoExcluir.setText(enderecoVO.getPKEndereco());
+                
+                JOptionPane.showMessageDialog(null, "Endereco incluido");
+            }
+            
+        }  catch (ParseException ex) {
+            Logger.getLogger(FEndereco.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (Exception e) {
+            Logger.getLogger(FEndereco.class.getName()).log(Level.SEVERE, null, e);
+        }
     }//GEN-LAST:event_jBInserirActionPerformed
+
+    private void jBBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBBuscarActionPerformed
+        try {
+            enderecoVO.setPKEndereco(this.jTFPKEnderecoBuscar.getText());
+                      
+            if(enderecoRN.buscarEndereco(enderecoVO)){
+                
+                jTABuscar.setText("ID: " + enderecoVO.getPKEndereco()+
+                        "\nCEP: " + enderecoVO.getCep() + 
+                        "\nPais: " + enderecoVO.getPais() + 
+                        "\nCidade: " + enderecoVO.getCidade() + 
+                        "\nRua: " + enderecoVO.getRua() + 
+                        "\nNumero: " + enderecoVO.getNumero() + 
+                        "\nComplemento: " + enderecoVO.getComplemento() + 
+                        "\nGRR: " + enderecoVO.getFKGrr());
+                
+                this.jTFPKEndereco.setText(enderecoVO.getPKEndereco());
+                this.jTFCep.setText(enderecoVO.getCep());
+                this.jTFPais.setText(enderecoVO.getPais());
+                this.jTFCidade.setText(enderecoVO.getCidade());
+                this.jTFRua.setText(enderecoVO.getRua());
+                this.jTFNum.setText(enderecoVO.getNumero());
+                this.jTFComplemento.setText(enderecoVO.getComplemento());
+                this.jTFGrr.setText(enderecoVO.getFKGrr());
+                this.jTFPKEnderecoEdit.setText(enderecoVO.getPKEndereco());
+                this.jTFCepEdit.setText(enderecoVO.getCep());
+                this.jTFPaisEdit.setText(enderecoVO.getPais());
+                this.jTFCidadeEdit.setText(enderecoVO.getCidade());
+                this.jTFRuaEdit.setText(enderecoVO.getRua());
+                this.jTFNumEdit.setText(enderecoVO.getNumero());
+                this.jTFComplementoEdit.setText(enderecoVO.getComplemento());
+                this.jTFGrrEdit.setText(enderecoVO.getFKGrr());
+                this.jTFPKEnderecoExcluir.setText(enderecoVO.getPKEndereco());
+                
+            }
+            
+        }  catch (ParseException ex) {
+            Logger.getLogger(FEndereco.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (Exception e) {
+            Logger.getLogger(FEndereco.class.getName()).log(Level.SEVERE, null, e);
+        }
+    }//GEN-LAST:event_jBBuscarActionPerformed
+
+    private void jBExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBExcluirActionPerformed
+        try {
+            enderecoVO.setPKEndereco(this.jTFPKEnderecoExcluir.getText());
+                      
+            if(enderecoRN.excluirEndereco(enderecoVO)){
+                
+                jTAExcluir.setText("O seguinte endereco foi excluido:\nID: " + enderecoVO.getPKEndereco()+
+                        "\nCEP: " + enderecoVO.getCep() + 
+                        "\nPais: " + enderecoVO.getPais() + 
+                        "\nCidade: " + enderecoVO.getCidade() + 
+                        "\nRua: " + enderecoVO.getRua() + 
+                        "\nNumero: " + enderecoVO.getNumero() + 
+                        "\nComplemento: " + enderecoVO.getComplemento() + 
+                        "\nGRR: " + enderecoVO.getFKGrr());
+                
+                this.jTFPKEndereco.setText(enderecoVO.getPKEndereco());
+                this.jTFCep.setText(enderecoVO.getCep());
+                this.jTFPais.setText(enderecoVO.getPais());
+                this.jTFCidade.setText(enderecoVO.getCidade());
+                this.jTFRua.setText(enderecoVO.getRua());
+                this.jTFNum.setText(enderecoVO.getNumero());
+                this.jTFComplemento.setText(enderecoVO.getComplemento());
+                this.jTFGrr.setText(enderecoVO.getFKGrr());
+                this.jTFPKEnderecoEdit.setText(enderecoVO.getPKEndereco());
+                this.jTFCepEdit.setText(enderecoVO.getCep());
+                this.jTFPaisEdit.setText(enderecoVO.getPais());
+                this.jTFCidadeEdit.setText(enderecoVO.getCidade());
+                this.jTFRuaEdit.setText(enderecoVO.getRua());
+                this.jTFNumEdit.setText(enderecoVO.getNumero());
+                this.jTFComplementoEdit.setText(enderecoVO.getComplemento());
+                this.jTFGrrEdit.setText(enderecoVO.getFKGrr());
+                this.jTFPKEnderecoBuscar.setText(enderecoVO.getPKEndereco());
+                
+            }
+            
+        }  catch (ParseException ex) {
+            Logger.getLogger(FEndereco.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (Exception e) {
+            Logger.getLogger(FEndereco.class.getName()).log(Level.SEVERE, null, e);
+        }
+    }//GEN-LAST:event_jBExcluirActionPerformed
 
     /**
      * @param args the command line arguments

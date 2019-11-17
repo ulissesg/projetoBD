@@ -43,7 +43,7 @@ public class FHistorico extends javax.swing.JFrame {
             this.jTFGRR.setText(historicoVO.getFK_GRR());
             
         } catch (Exception e) {
-            Logger.getLogger(FAluno.class.getName()).log(Level.SEVERE, null, e);
+            Logger.getLogger(FHistorico.class.getName()).log(Level.SEVERE, null, e);
         }
     }
 
@@ -415,9 +415,9 @@ public class FHistorico extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(null, "Historico inserido");
             }
         } catch (ParseException ex) {
-            Logger.getLogger(FAluno.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(FHistorico.class.getName()).log(Level.SEVERE, null, ex);
         } catch (Exception e) {
-            Logger.getLogger(FAluno.class.getName()).log(Level.SEVERE, null, e);
+            Logger.getLogger(FHistorico.class.getName()).log(Level.SEVERE, null, e);
         }
     }//GEN-LAST:event_jBInserirActionPerformed
 
@@ -448,7 +448,7 @@ public class FHistorico extends javax.swing.JFrame {
             }
 
         } catch (Exception e) {
-            Logger.getLogger(FAluno.class.getName()).log(Level.SEVERE, null, e);
+            Logger.getLogger(FHistorico.class.getName()).log(Level.SEVERE, null, e);
         }
     }//GEN-LAST:event_jBBuscarActionPerformed
 
@@ -479,7 +479,7 @@ public class FHistorico extends javax.swing.JFrame {
             }
 
         } catch (Exception e) {
-            Logger.getLogger(FAluno.class.getName()).log(Level.SEVERE, null, e);
+            Logger.getLogger(FHistorico.class.getName()).log(Level.SEVERE, null, e);
         }
     }//GEN-LAST:event_jBDeletarActionPerformed
 
@@ -504,7 +504,7 @@ public class FHistorico extends javax.swing.JFrame {
             }
 
         } catch (Exception e) {
-            //            Logger.getLogger(FAluno.class.getName()).log(Level.SEVERE, null, e);
+            Logger.getLogger(FHistorico.class.getName()).log(Level.SEVERE, null, e);
         }
     }//GEN-LAST:event_jBEditarActionPerformed
 

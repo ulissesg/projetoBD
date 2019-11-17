@@ -61,10 +61,8 @@
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Component id="jTFPKEndereco" alignment="2" max="32767" attributes="0"/>
-                                  <Group type="103" alignment="2" groupAlignment="2" attributes="0">
-                                      <Component id="jTFGrr" alignment="2" pref="301" max="32767" attributes="0"/>
-                                      <Component id="jBInserir" alignment="2" min="-2" max="-2" attributes="0"/>
-                                  </Group>
+                                  <Component id="jTFGrr" alignment="2" pref="301" max="32767" attributes="0"/>
+                                  <Component id="jBInserir" alignment="2" min="-2" max="-2" attributes="0"/>
                                   <Component id="jTFComplemento" alignment="2" max="32767" attributes="0"/>
                                   <Component id="jTFNum" alignment="2" max="32767" attributes="0"/>
                                   <Component id="jTFRua" alignment="2" max="32767" attributes="0"/>
@@ -226,10 +224,8 @@
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Component id="jTFNewPkEnderecp" alignment="1" max="32767" attributes="0"/>
                                   <Component id="jTFPKEnderecoEdit" alignment="2" max="32767" attributes="0"/>
-                                  <Group type="103" alignment="2" groupAlignment="2" attributes="0">
-                                      <Component id="jTFGrrEdit" alignment="2" pref="301" max="32767" attributes="0"/>
-                                      <Component id="jBEditar" alignment="2" min="-2" max="-2" attributes="0"/>
-                                  </Group>
+                                  <Component id="jTFGrrEdit" alignment="2" pref="301" max="32767" attributes="0"/>
+                                  <Component id="jBEditar" alignment="2" min="-2" max="-2" attributes="0"/>
                                   <Component id="jTFComplementoEdit" alignment="2" max="32767" attributes="0"/>
                                   <Component id="jTFNumEdit" alignment="2" max="32767" attributes="0"/>
                                   <Component id="jTFRuaEdit" alignment="2" max="32767" attributes="0"/>
@@ -433,6 +429,9 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="Buscar"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jBBuscarActionPerformed"/>
+              </Events>
             </Component>
             <Container class="javax.swing.JScrollPane" name="jScrollPane1">
               <AuxValues>
@@ -514,6 +513,9 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="Excluir"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jBExcluirActionPerformed"/>
+              </Events>
             </Component>
             <Container class="javax.swing.JScrollPane" name="jScrollPane2">
               <AuxValues>
