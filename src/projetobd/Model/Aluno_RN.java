@@ -6,6 +6,8 @@
 package projetobd.Model;
 
 import java.sql.*;
+import java.sql.ResultSet;
+import java.util.ArrayList;
 
 /**
  *
@@ -151,4 +153,32 @@ public class Aluno_RN {
        }
 //------------------------------------------------------------------------------
         
+       //Lista Alunos ----------------------------------------------------------
+       
+       public boolean listaAlunos(ArrayList<Aluno_VO> alu) throws Exception {
+           
+           Aluno_VO x = new Aluno_VO();
+           try {
+               conex = new Conexao();
+               
+               PreparedStatement listAlunos = conex.conectar().prepareCall("{call dbo.p_aluno_selectall()}");
+               
+//               while (listAlunos.getResultSet().next()){
+//                   x.setPk_grr(listAlunos.getResultSet().getString("PK_GRR"));
+//                   x.setNome(listAlunos.getResultSet().getString("nome"));
+//                   x.setCpf(listAlunos.getResultSet().getString("cpf"));
+//                   alu.add(x);
+//                   listAlunos.executeUpdate();
+//               }
+               listAlunos.executeUpdate();
+               System.out.println(listAlunos);
+               
+               
+               return true;
+               
+                       
+           } catch (Exception e) {
+           }
+           return false;
+       }
 }

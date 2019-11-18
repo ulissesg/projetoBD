@@ -104,6 +104,7 @@ public class FLogin extends javax.swing.JFrame {
                 new FAluno(alunoVO).setVisible(true);
                 new FHistorico().setVisible(true);
                 new FEndereco().setVisible(true);
+                new FMatricula().setVisible(true);
             }
         } 
         catch (Exception e) 

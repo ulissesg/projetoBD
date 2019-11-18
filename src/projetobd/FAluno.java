@@ -8,6 +8,7 @@ package projetobd;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -89,6 +90,10 @@ public class FAluno extends javax.swing.JFrame {
         jBDel = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTXAExcluido = new javax.swing.JTextArea();
+        jPanel5 = new javax.swing.JPanel();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        jTAList = new javax.swing.JTextArea();
+        jBAtualizar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Aluno");
@@ -286,6 +291,48 @@ public class FAluno extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("Deletar", jPanel4);
 
+        jPanel5.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jPanel5FocusGained(evt);
+            }
+        });
+
+        jTAList.setColumns(20);
+        jTAList.setRows(5);
+        jScrollPane3.setViewportView(jTAList);
+
+        jBAtualizar.setText("Atualizar");
+        jBAtualizar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBAtualizarActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
+        jPanel5.setLayout(jPanel5Layout);
+        jPanel5Layout.setHorizontalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane3)
+                .addContainerGap())
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addGap(120, 120, 120)
+                .addComponent(jBAtualizar)
+                .addContainerGap(124, Short.MAX_VALUE))
+        );
+        jPanel5Layout.setVerticalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jBAtualizar)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
+
+        jTabbedPane1.addTab("Lista de alunos", jPanel5);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -420,6 +467,31 @@ public class FAluno extends javax.swing.JFrame {
         
     }//GEN-LAST:event_jTXFGrrDelActionPerformed
 
+    private void jPanel5FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jPanel5FocusGained
+        
+    }//GEN-LAST:event_jPanel5FocusGained
+
+    private void jBAtualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBAtualizarActionPerformed
+        try {
+            ArrayList<Aluno_VO> alu = new ArrayList<>();
+            
+            if (alunoRN.listaAlunos(alu)){
+                int x = alu.size();
+                String text = "inicio";
+                for (int i = 1; i <= x; i++) {
+                    text = text + "\n----------------------\n"
+                            + "GRR: " + alu.get(i).getCpf()
+                            + "\nNome: " + alu.get(i).getNome()
+                            + "\nCPF: " + alu.get(i).getCpf()
+                            + "\n----------------------\n";
+                }
+                jTAList.setText(text);
+            }
+        } catch (Exception e) {
+            Logger.getLogger(FAluno.class.getName()).log(Level.SEVERE, null, e);
+        }
+    }//GEN-LAST:event_jBAtualizarActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -456,6 +528,7 @@ public class FAluno extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jBAtualizar;
     private javax.swing.JButton jBBuscar;
     private javax.swing.JButton jBDel;
     private javax.swing.JToggleButton jBTNCadastrar;
@@ -477,8 +550,11 @@ public class FAluno extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
+    private javax.swing.JPanel jPanel5;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JTextArea jTAList;
     private javax.swing.JTextArea jTXABusca;
     private javax.swing.JTextArea jTXAExcluido;
     private javax.swing.JTextField jTXFCPF;
