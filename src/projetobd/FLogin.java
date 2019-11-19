@@ -107,7 +107,10 @@ public class FLogin extends javax.swing.JFrame {
 //                new FMatricula().setVisible(true);
 //                new FTurma().setVisible(true);
 //                new FCursos().setVisible(true);
-                new FProfessor().setVisible(true);
+//                new FProfessor().setVisible(true);
+//                new FUniversidade().setVisible(true);
+//                new FSetor().setVisible(true);
+                new FDepartamento().setVisible(true);
             }
         } 
         catch (Exception e) 
